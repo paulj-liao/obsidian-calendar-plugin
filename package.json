@@ -41,6 +41,10 @@
     "typescript": "5.7.2"
   },
   "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": ["<rootDir>/src"],
+    "testMatch": ["**/*.test.ts"],
     "moduleNameMapper": {
       "src/(.*)": "<rootDir>/src/$1"
     },
@@ -51,12 +55,19 @@
           "preprocess": true
         }
       ],
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.ts$": ["ts-jest", {
+        "tsconfig": "tsconfig.jest.json"
+      }]
     },
     "moduleFileExtensions": [
       "js",
       "ts",
       "svelte"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.test.ts",
+      "!src/testUtils/**"
     ]
   }
 }
