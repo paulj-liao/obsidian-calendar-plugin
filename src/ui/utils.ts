@@ -19,8 +19,8 @@ export function partition(
   arr: string[],
   predicate: (elem: string) => boolean
 ): [string[], string[]] {
-  const pass = [];
-  const fail = [];
+  const pass: string[] = [];
+  const fail: string[] = [];
 
   arr.forEach((elem) => {
     if (predicate(elem)) {
@@ -39,18 +39,18 @@ export function partition(
  *
  * @param file
  */
-export function getDateUIDFromFile(file: TFile | null): string {
+export function getDateUIDFromFile(file: TFile | null): string | null {
   if (!file) {
     return null;
   }
 
   // TODO: I'm not checking the path!
-  let date = getDateFromFile(file, "day");
+  let date = getDateFromFile(file as any, "day");
   if (date) {
     return getDateUID(date, "day");
   }
 
-  date = getDateFromFile(file, "week");
+  date = getDateFromFile(file as any, "week");
   if (date) {
     return getDateUID(date, "week");
   }

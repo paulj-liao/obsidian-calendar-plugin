@@ -5,18 +5,18 @@ import {
 } from "obsidian-daily-notes-interface";
 import { writable } from "svelte/store";
 
-import { defaultSettings, ISettings } from "src/settings";
+import { defaultSettings, type ISettings } from "src/settings";
 
 import { getDateUIDFromFile } from "./utils";
 
 function createDailyNotesStore() {
   let hasError = false;
-  const store = writable<Record<string, TFile>>(null);
+  const store = writable<Record<string, TFile> | null>(null);
   return {
     reindex: () => {
       try {
         const dailyNotes = getAllDailyNotes();
-        store.set(dailyNotes);
+        store.set(dailyNotes as any);
         hasError = false;
       } catch (err) {
         if (!hasError) {
@@ -33,12 +33,12 @@ function createDailyNotesStore() {
 
 function createWeeklyNotesStore() {
   let hasError = false;
-  const store = writable<Record<string, TFile>>(null);
+  const store = writable<Record<string, TFile> | null>(null);
   return {
     reindex: () => {
       try {
         const weeklyNotes = getAllWeeklyNotes();
-        store.set(weeklyNotes);
+        store.set(weeklyNotes as any);
         hasError = false;
       } catch (err) {
         if (!hasError) {
@@ -58,10 +58,10 @@ export const dailyNotes = createDailyNotesStore();
 export const weeklyNotes = createWeeklyNotesStore();
 
 function createSelectedFileStore() {
-  const store = writable<string>(null);
+  const store = writable<string | null>(null);
 
   return {
-    setFile: (file: TFile) => {
+    setFile: (file: TFile | null) => {
       const id = getDateUIDFromFile(file);
       store.set(id);
     },

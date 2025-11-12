@@ -13,6 +13,7 @@ import { TRIGGER_ON_OPEN, VIEW_TYPE_CALENDAR } from "src/constants";
 import { tryToCreateDailyNote } from "src/io/dailyNotes";
 import { tryToCreateWeeklyNote } from "src/io/weeklyNotes";
 import type { ISettings } from "src/settings";
+import type { ObsidianInternalWorkspace, ObsidianInternalVault, ItemViewWithContentEl } from "src/types";
 
 import Calendar from "./ui/Calendar.svelte";
 import { showFileMenu } from "./ui/fileMenu";
@@ -47,8 +48,7 @@ export default class CalendarView extends ItemView {
     this.onContextMenuWeek = this.onContextMenuWeek.bind(this);
 
     this.registerEvent(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (<any>this.app.workspace).on(
+      (this.app.workspace as ObsidianInternalWorkspace).on(
         "periodic-notes:settings-updated",
         this.onNoteSettingsUpdate
       )
@@ -100,8 +100,7 @@ export default class CalendarView extends ItemView {
     this.app.workspace.trigger(TRIGGER_ON_OPEN, sources);
 
     this.calendar = new Calendar({
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      target: (this as any).contentEl,
+      target: (this as unknown as ItemViewWithContentEl).contentEl,
       props: {
         onClickDay: this.openOrCreateDailyNote,
         onClickWeek: this.openOrCreateWeeklyNote,
@@ -301,8 +300,7 @@ export default class CalendarView extends ItemView {
       return;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const mode = (this.app.vault as any).getConfig("defaultViewMode");
+    const mode = (this.app.vault as ObsidianInternalVault).getConfig("defaultViewMode") as string;
     const leaf = inNewSplit
       ? workspace.splitActiveLeaf()
       : workspace.getUnpinnedLeaf();

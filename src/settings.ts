@@ -3,6 +3,7 @@ import { appHasDailyNotesPluginLoaded } from "obsidian-daily-notes-interface";
 import type { ILocaleOverride, IWeekStartOption } from "obsidian-calendar-ui";
 
 import { DEFAULT_WEEK_FORMAT, DEFAULT_WORDS_PER_DOT } from "src/constants";
+import type { ObsidianInternalApp } from "src/types";
 
 import type CalendarPlugin from "./main";
 
@@ -45,9 +46,8 @@ export const defaultSettings = Object.freeze({
 });
 
 export function appHasPeriodicNotesPluginLoaded(): boolean {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const periodicNotes = (<any>window.app).plugins.getPlugin("periodic-notes");
-  return periodicNotes && periodicNotes.settings?.weekly?.enabled;
+  const periodicNotes = (window.app as ObsidianInternalApp).plugins.getPlugin("periodic-notes");
+  return periodicNotes && (periodicNotes as any).settings?.weekly?.enabled;
 }
 
 export class CalendarSettingsTab extends PluginSettingTab {
