@@ -15,7 +15,7 @@ describe("settings", () => {
 
     it("should be frozen (immutable)", () => {
       expect(() => {
-        // @ts-ignore - testing runtime behavior
+        // @ts-expect-error - testing runtime behavior
         defaultSettings.wordsPerDot = 500;
       }).toThrow();
     });

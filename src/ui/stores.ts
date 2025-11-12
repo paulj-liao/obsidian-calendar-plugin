@@ -16,6 +16,7 @@ function createDailyNotesStore() {
     reindex: () => {
       try {
         const dailyNotes = getAllDailyNotes();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         store.set(dailyNotes as any);
         hasError = false;
       } catch (err) {
@@ -42,6 +43,7 @@ function createWeeklyNotesStore() {
     reindex: () => {
       try {
         const weeklyNotes = getAllWeeklyNotes();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         store.set(weeklyNotes as any);
         hasError = false;
       } catch (err) {

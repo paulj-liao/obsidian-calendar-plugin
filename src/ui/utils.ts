@@ -77,11 +77,13 @@ export function getDateUIDFromFile(file: TFile | null): string | null {
   }
 
   // TODO: I'm not checking the path!
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let date = getDateFromFile(file as any, "day");
   if (date) {
     return getDateUID(date, "day");
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   date = getDateFromFile(file as any, "week");
   if (date) {
     return getDateUID(date, "week");

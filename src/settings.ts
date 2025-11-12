@@ -67,6 +67,7 @@ export const defaultSettings = Object.freeze({
  */
 export function appHasPeriodicNotesPluginLoaded(): boolean {
   const periodicNotes = (window.app as ObsidianInternalApp).plugins.getPlugin("periodic-notes");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return periodicNotes && (periodicNotes as any).settings?.weekly?.enabled;
 }
 
@@ -236,6 +237,7 @@ export class CalendarSettingsTab extends PluginSettingTab {
           const trimmedValue = value.trim();
 
           // Check for potentially dangerous characters
+          // eslint-disable-next-line no-control-regex
           if (trimmedValue.includes("..") || /[<>:"|?*\x00-\x1f]/.test(trimmedValue)) {
             new Notice("Calendar: Weekly note format contains invalid characters", 5000);
             textfield.setValue(this.plugin.options.weeklyNoteFormat);
@@ -260,6 +262,7 @@ export class CalendarSettingsTab extends PluginSettingTab {
           const trimmedValue = value.trim();
 
           // Check for path traversal and invalid characters
+          // eslint-disable-next-line no-control-regex
           if (trimmedValue.includes("..") || /[<>:"|?*\x00-\x1f]/.test(trimmedValue)) {
             new Notice("Calendar: Template path contains invalid characters", 5000);
             textfield.setValue(this.plugin.options.weeklyNoteTemplate);
@@ -282,6 +285,7 @@ export class CalendarSettingsTab extends PluginSettingTab {
           const trimmedValue = value.trim();
 
           // Check for path traversal and invalid characters
+          // eslint-disable-next-line no-control-regex
           if (trimmedValue.includes("..") || /[<>:"|?*\x00-\x1f]/.test(trimmedValue)) {
             new Notice("Calendar: Folder path contains invalid characters", 5000);
             textfield.setValue(this.plugin.options.weeklyNoteFolder);

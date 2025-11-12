@@ -147,6 +147,7 @@ It has several lines and some markdown.
     });
 
     it("should return null for undefined file", () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect(getDateUIDFromFile(undefined as any)).toBeNull();
     });
 
