@@ -1,8 +1,24 @@
 # obsidian-calendar-plugin
 
+> **Note:** This is a maintained fork of the [original Calendar plugin by Liam Cain](https://github.com/liamcain/obsidian-calendar-plugin). This fork includes security updates, bug fixes, and quality improvements while maintaining full compatibility with the original.
+
 This plugin for [Obsidian](https://obsidian.md/) creates a simple Calendar view for visualizing and navigating between your daily notes.
 
 ![screenshot-full](https://raw.githubusercontent.com/liamcain/obsidian-calendar-plugin/master/images/screenshot-full.png)
+
+## What's New in This Fork
+
+This maintained version includes several improvements:
+
+- ✅ **Updated Dependencies**: All packages updated from 2021 versions to latest (TypeScript 5.7.2, Svelte 3.59.2, etc.)
+- ✅ **Security Enhancements**: Added Dependabot, SECURITY.md, updated GitHub Actions workflows
+- ✅ **Better Error Handling**: User-facing error notifications and improved error messages
+- ✅ **Input Validation**: Protection against path traversal and invalid characters in settings
+- ✅ **Comprehensive Testing**: 31 Jest tests covering core functionality
+- ✅ **Documentation**: JSDoc comments, CONTRIBUTING.md, and detailed build/test guides
+- ✅ **Type Safety**: Proper TypeScript type definitions for better code quality
+
+See [SECURITY_AUDIT_REPORT.md](./docs/SECURITY_AUDIT_REPORT.md) for detailed security improvements.
 
 ## Usage
 
@@ -191,12 +207,24 @@ You can open **weekly notes** in 2 ways: searching `Calendar: open weekly note` 
 - [Santi Younger demos how Calendar + Periodic Notes can be used for weekly review](https://www.youtube.com/watch?v=T9y8JABS9_Q)
 - [Filipe Donadio uses the calendar to plan his day](https://www.youtube.com/watch?v=hxf3_dXIcqc)
 
-## Say Thanks 🙏
+## Credits & Acknowledgments
 
-If you like this plugin and would like to buy me a coffee, you can!
+### Original Creator
+
+This plugin was originally created by **[Liam Cain](https://github.com/liamcain)**. All original design, features, and functionality are credited to Liam's excellent work.
+
+If you'd like to support the original creator:
 
 [<img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="BuyMeACoffee" width="100">](https://www.buymeacoffee.com/liamcain)
 
-Like my work and want to see more like it? You can sponsor me.
-
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/liamcain?style=social)](https://github.com/sponsors/liamcain)
+
+### This Fork
+
+This maintained fork focuses on:
+- **Security updates**: Keeping dependencies current and secure
+- **Bug fixes**: Addressing issues as they arise
+- **Quality improvements**: Enhanced error handling, documentation, and testing
+- **Compatibility**: Ensuring the plugin works with modern Obsidian versions
+
+**Repository**: [paulj-liao/obsidian-calendar-plugin](https://github.com/paulj-liao/obsidian-calendar-plugin)
