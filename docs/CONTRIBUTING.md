@@ -32,7 +32,7 @@ Thank you for your interest in contributing to the Obsidian Calendar Plugin! Thi
 
 3. **Add the upstream remote:**
    ```bash
-   git remote add upstream https://github.com/liamcain/obsidian-calendar-plugin.git
+   git remote add upstream https://github.com/paulj-liao/obsidian-calendar-plugin.git
    ```
 
 4. **Install dependencies:**
@@ -290,7 +290,7 @@ Error appears: "Cannot read property 'format' of undefined"
 
 If you have questions:
 
-- Open a [GitHub Discussion](https://github.com/liamcain/obsidian-calendar-plugin/discussions)
+- Open a [GitHub Discussion](https://github.com/paulj-liao/obsidian-calendar-plugin/discussions)
 - Check the [Obsidian forum](https://forum.obsidian.md/)
 - Review existing issues and pull requests
 

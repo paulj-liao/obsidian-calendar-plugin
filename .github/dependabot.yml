@@ -9,7 +9,7 @@ updates:
       time: "09:00"
     open-pull-requests-limit: 10
     reviewers:
-      - "liamcain"
+      - "paulj-liao"
     labels:
       - "dependencies"
       - "automated"
@@ -43,7 +43,7 @@ updates:
       interval: "monthly"
     open-pull-requests-limit: 5
     reviewers:
-      - "liamcain"
+      - "paulj-liao"
     labels:
       - "github-actions"
       - "automated"

@@ -19,8 +19,8 @@ We appreciate your efforts to responsibly disclose security vulnerabilities. If 
 
 Instead, please report security vulnerabilities by:
 
-1. **Email:** Send details to the maintainer at [liamcain on GitHub](https://github.com/liamcain)
-2. **GitHub Security Advisory:** Use [GitHub's private vulnerability reporting](https://github.com/liamcain/obsidian-calendar-plugin/security/advisories/new) (preferred method)
+1. **Email:** Send details to the maintainer at [paulj-liao on GitHub](https://github.com/paulj-liao)
+2. **GitHub Security Advisory:** Use [GitHub's private vulnerability reporting](https://github.com/paulj-liao/obsidian-calendar-plugin/security/advisories/new) (preferred method)
 
 ### What to Include
 
@@ -104,7 +104,7 @@ A comprehensive security audit was conducted in November 2025. The full report i
 
 ## Questions
 
-If you have questions about this security policy, please create a [GitHub Discussion](https://github.com/liamcain/obsidian-calendar-plugin/discussions) or reach out to the maintainer.
+If you have questions about this security policy, please create a [GitHub Discussion](https://github.com/paulj-liao/obsidian-calendar-plugin/discussions) or reach out to the maintainer.
 
 ---
 

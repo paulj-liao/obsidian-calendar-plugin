@@ -2,7 +2,7 @@
   "name": "calendar",
   "version": "1.5.10",
   "description": "Calendar view of your daily notes",
-  "author": "liamcain",
+  "author": "Liam Cain (maintained by paulj-liao)",
   "main": "main.js",
   "license": "MIT",
   "scripts": {
