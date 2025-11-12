@@ -18,16 +18,30 @@ declare global {
   }
 }
 
+/**
+ * Calendar Plugin for Obsidian
+ *
+ * Provides a calendar view that integrates with Daily Notes and Weekly Notes,
+ * allowing users to visualize and navigate their notes by date.
+ */
 export default class CalendarPlugin extends Plugin {
   public options: ISettings;
   private view: CalendarView;
 
+  /**
+   * Called when the plugin is unloaded.
+   * Detaches all calendar view leaves from the workspace.
+   */
   onunload(): void {
     this.app.workspace
       .getLeavesOfType(VIEW_TYPE_CALENDAR)
       .forEach((leaf) => leaf.detach());
   }
 
+  /**
+   * Called when the plugin is loaded.
+   * Registers the calendar view, commands, settings tab, and initializes the UI.
+   */
   async onload(): Promise<void> {
     this.register(
       settings.subscribe((value) => {
@@ -83,6 +97,10 @@ export default class CalendarPlugin extends Plugin {
     }
   }
 
+  /**
+   * Initializes the calendar view in the right sidebar.
+   * Only creates a new leaf if one doesn't already exist.
+   */
   initLeaf(): void {
     if (this.app.workspace.getLeavesOfType(VIEW_TYPE_CALENDAR).length) {
       return;
@@ -92,6 +110,10 @@ export default class CalendarPlugin extends Plugin {
     });
   }
 
+  /**
+   * Loads plugin settings from disk.
+   * Merges saved settings with defaults and persists the result.
+   */
   async loadOptions(): Promise<void> {
     const options = await this.loadData();
     settings.update((old) => {
@@ -104,6 +126,11 @@ export default class CalendarPlugin extends Plugin {
     await this.saveData(this.options);
   }
 
+  /**
+   * Updates plugin settings and persists them to disk.
+   *
+   * @param changeOpts - Function that receives current settings and returns changes to apply
+   */
   async writeOptions(
     changeOpts: (settings: ISettings) => Partial<ISettings>
   ): Promise<void> {

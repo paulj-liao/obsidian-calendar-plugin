@@ -1,4 +1,4 @@
-import type { TFile } from "obsidian";
+import { Notice, type TFile } from "obsidian";
 import {
   getAllDailyNotes,
   getAllWeeklyNotes,
@@ -20,8 +20,12 @@ function createDailyNotesStore() {
         hasError = false;
       } catch (err) {
         if (!hasError) {
-          // Avoid error being shown multiple times
-          console.log("[Calendar] Failed to find daily notes folder", err);
+          // Show user-facing error notification
+          new Notice(
+            "Calendar: Unable to load daily notes. Please check your Daily Notes plugin settings.",
+            5000
+          );
+          console.error("[Calendar] Failed to find daily notes folder:", err);
         }
         store.set({});
         hasError = true;
@@ -42,8 +46,12 @@ function createWeeklyNotesStore() {
         hasError = false;
       } catch (err) {
         if (!hasError) {
-          // Avoid error being shown multiple times
-          console.log("[Calendar] Failed to find weekly notes folder", err);
+          // Show user-facing error notification
+          new Notice(
+            "Calendar: Unable to load weekly notes. Please check your Weekly Notes or Periodic Notes plugin settings.",
+            5000
+          );
+          console.error("[Calendar] Failed to find weekly notes folder:", err);
         }
         store.set({});
         hasError = true;

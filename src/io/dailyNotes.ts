@@ -1,5 +1,5 @@
 import type { Moment } from "moment";
-import type { TFile } from "obsidian";
+import { Notice, type TFile } from "obsidian";
 import {
   createDailyNote,
   getDailyNoteSettings,
@@ -22,13 +22,21 @@ export async function tryToCreateDailyNote(
   const filename = date.format(format);
 
   const createFile = async () => {
-    const dailyNote = await createDailyNote(date);
-    const leaf = inNewSplit
-      ? workspace.splitActiveLeaf()
-      : workspace.getUnpinnedLeaf();
+    try {
+      const dailyNote = await createDailyNote(date);
+      const leaf = inNewSplit
+        ? workspace.splitActiveLeaf()
+        : workspace.getUnpinnedLeaf();
 
-    await leaf.openFile(dailyNote, { active : true });
-    cb?.(dailyNote);
+      await leaf.openFile(dailyNote, { active : true });
+      cb?.(dailyNote);
+    } catch (error) {
+      new Notice(
+        `Calendar: Failed to create daily note "${filename}". ${error.message || "Unknown error"}`,
+        7000
+      );
+      console.error("[Calendar] Error creating daily note:", error);
+    }
   };
 
   if (settings.shouldConfirmBeforeCreate) {
